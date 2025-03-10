@@ -1,4 +1,4 @@
-import ImageGet from "@/components/api/page";
+import ImageGet from "../components/api/data";
 export default function LandingPage() {
   return (
     <div className="p-3">

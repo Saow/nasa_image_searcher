@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 async function GetData() {
@@ -37,7 +38,7 @@ export default function ImageGet() {
         <div className="grid md:grid-cols-5 gap-4 grid-cols-1">
             {data.body.map((image, index) => (
                 <div key={index}>
-                    <img src={image} className="w-[30rem] h-96 rounded-lg" />
+                    <Image alt="image" src={image} className="w-[30rem] h-96 rounded-lg" />
                 </div>
             ))}
         </div>
