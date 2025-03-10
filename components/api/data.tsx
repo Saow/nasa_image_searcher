@@ -7,13 +7,13 @@ async function GetData() {
     const url = `https://images-api.nasa.gov/search?q=${searchquery}&page=1&media_type=image&year_start=1920&year_end=2025`;
     const res = await fetch(url);
     const data = await res.json();
-    const images = data.collection.items.map((links: any) => {
+    const images = data.collection.items.map((item: any) => {
         try {
-            return JSON.parse(links.links[0].href).href;
+            return item.links[0].href;
         } catch (e) {
             console.log("error:", e);
         }
-        return links.links[0].href;
+        return item.links[0].href;
     });
     console.log(images);
     return {
@@ -36,9 +36,10 @@ export default function ImageGet() {
     console.log(data);
     return (
         <div className="grid md:grid-cols-5 gap-4 grid-cols-1">
+
             {data.body.map((image, index) => (
                 <div key={index}>
-                    <Image alt="image" src={image} className="w-[30rem] h-96 rounded-lg" />
+                    <Image alt="image" src={image} width={500} height={500} className="w-[30rem] h-80 rounded-lg" />
                 </div>
             ))}
         </div>
